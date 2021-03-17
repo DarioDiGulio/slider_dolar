@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Iframe</title>
+    <!-- UIkit CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/uikit@3.6.18/dist/css/uikit.min.css"
+    />
+    <style>
+      .main {
+        width: 100vw;
+        position: relative;
+        margin-left: -50vw;
+        height: 100px;
+        left: 50%;
+      }
+
+      .div-dolar {
+        display: block;
+        margin: 0 auto;
+        padding: 0;
+        font-family: Roboto, "Roboto", Arial;
+        background: #718176;
+        width: 16.6666666667%;
+        float: left;
+      }
+
+      .text-dolar {
+        font-weight: bold;
+        font-size: 15px;
+        text-align: center;
+        padding-top: 15px;
+        margin: 0;
+        padding: 0;
+        margin-top: 20px;
+        margin-bottom: 15px;
+      }
+
+      .text-valor {
+        font-size: 15px;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+        padding-bottom: 10px;
+      }
+
+      .div-compra {
+        text-align: center;
+        color: white;
+      }
+
+      .div-venta {
+        text-align: center;
+        padding-bottom: 10px;
+        color: white;
+      }
+
+      p {
+        color: #ffffff;
+        text-align: center;
+      }
+    </style>
+  </head>
+
+  <body onload="setValues()">
+    <!-- <div class="main" id="main">
+      <div class="div-dolar">
+        <p class="text-dolar" style="background-color: #e4e8d1; color: #718176">
+          💵 DOLAR OFICIAL
+        </p>
+        <div class="div-compra">
+          <a class="text-valor" id="valor-oficial">Compra </a>
+          <a><b id="valor-oficial-compra" style="color: #e4e8d1"></b></a>
+        </div>
+        <div class="div-venta">
+          <a class="text-valor" id="valor-compra" style="text-align: right"
+            >Venta</a
+          >
+          <a><b id="valor-oficial-venta" style="color: #e4e8d1"></b></a>
+        </div>
+      </div>
+
+      <div class="div-dolar">
+        <p class="text-dolar" style="background-color: #e4e8d1; color: #718176">
+          💵 DOLAR BLUE
+        </p>
+        <div class="div-compra">
+          <a class="text-valor" id="valor-compra">Compra </a>
+          <a><b id="valor-blue-compra" style="color: #e4e8d1"></b></a>
+        </div>
+        <div class="div-venta">
+          <a class="text-valor" id="valor-compra" style="text-align: right"
+            >Venta</a
+          >
+          <a><b id="valor-blue-venta" style="color: #e4e8d1"></b></a>
+        </div>
+      </div>
+
+      <div class="div-dolar">
+        <p class="text-dolar" style="background-color: #e4e8d1; color: #718176">
+          💵 DOLAR BOLSA
+        </p>
+        <div class="div-compra">
+          <a class="text-valor" id="valor-compra">Compra </a>
+          <a><b id="valor-bolsa-compra" style="color: #e4e8d1"></b></a>
+        </div>
+        <div class="div-venta">
+          <a class="text-valor" id="valor-compra" style="text-align: right"
+            >Venta</a
+          >
+          <a><b id="valor-bolsa-venta" style="color: #e4e8d1"></b></a>
+        </div>
+      </div>
+
+      <div class="div-dolar">
+        <p class="text-dolar" style="background-color: #e4e8d1; color: #718176">
+          💵 CONTADO LIQUI
+        </p>
+        <div class="div-compra">
+          <a class="text-valor" id="valor-compra">Compra </a>
+          <a><b id="valor-liqui-compra" style="color: #e4e8d1"></b></a>
+        </div>
+        <div class="div-venta">
+          <a class="text-valor" id="valor-compra" style="text-align: right"
+            >Venta</a
+          >
+          <a><b id="valor-liqui-venta" style="color: #e4e8d1"></b></a>
+        </div>
+      </div>
+
+      <div class="div-dolar">
+        <p class="text-dolar" style="background-color: #e4e8d1; color: #718176">
+          💵 DOLAR PROMEDIO
+        </p>
+        <div class="div-compra">
+          <a class="text-valor" id="valor-compra">Compra </a>
+          <a><b id="valor-promedio-compra" style="color: #e4e8d1"></b></a>
+        </div>
+        <div class="div-venta">
+          <a class="text-valor" id="valor-compra" style="text-align: right"
+            >Venta</a
+          >
+          <a><b id="valor-promedio-venta" style="color: #e4e8d1"></b></a>
+        </div>
+      </div>
+    </div> -->
+    <div uk-slider id="slider">
+      <div class="uk-position-relative">
+        <div class="uk-slider-container uk-light">
+          <ul class="test uk-slider-items">
+            <li>
+              <canvas width="500" height="50"></canvas>
+              <div class="div-dolar">
+                <p
+                  class="text-dolar"
+                  style="background-color: #e4e8d1; color: #718176"
+                >
+                  💵 DOLAR OFICIAL
+                </p>
+                <div class="div-compra">
+                  <a class="text-valor" id="valor-oficial">Compra </a>
+                  <a
+                    ><b id="valor-oficial-compra" style="color: #e4e8d1"></b
+                  ></a>
+                </div>
+                <div class="div-venta">
+                  <a
+                    class="text-valor"
+                    id="valor-compra"
+                    style="text-align: right"
+                    >Venta</a
+                  >
+                  <a><b id="valor-oficial-venta" style="color: #e4e8d1"></b></a>
+                </div>
+              </div>
+            </li>
+            <li>
+              <canvas width="500" height="50"></canvas>
+              <div class="div-dolar">
+                <p
+                  class="text-dolar"
+                  style="background-color: #e4e8d1; color: #718176"
+                >
+                  💵 DOLAR BLUE
+                </p>
+                <div class="div-compra">
+                  <a class="text-valor" id="valor-compra">Compra </a>
+                  <a><b id="valor-blue-compra" style="color: #e4e8d1"></b></a>
+                </div>
+                <div class="div-venta">
+                  <a
+                    class="text-valor"
+                    id="valor-compra"
+                    style="text-align: right"
+                    >Venta</a
+                  >
+                  <a><b id="valor-blue-venta" style="color: #e4e8d1"></b></a>
+                </div>
+              </div>
+            </li>
+            <li>
+              <canvas width="500" height="50"></canvas>
+              <div class="div-dolar">
+                <p
+                  class="text-dolar"
+                  style="background-color: #e4e8d1; color: #718176"
+                >
+                  💵 DOLAR BOLSA
+                </p>
+                <div class="div-compra">
+                  <a class="text-valor" id="valor-compra">Compra </a>
+                  <a><b id="valor-bolsa-compra" style="color: #e4e8d1"></b></a>
+                </div>
+                <div class="div-venta">
+                  <a
+                    class="text-valor"
+                    id="valor-compra"
+                    style="text-align: right"
+                    >Venta</a
+                  >
+                  <a><b id="valor-bolsa-venta" style="color: #e4e8d1"></b></a>
+                </div>
+              </div>
+            </li>
+            <li>
+              <canvas width="500" height="50"></canvas>
+              <div class="div-dolar">
+                <p
+                  class="text-dolar"
+                  style="background-color: #e4e8d1; color: #718176"
+                >
+                  💵 CONTADO LIQUI
+                </p>
+                <div class="div-compra">
+                  <a class="text-valor" id="valor-compra">Compra </a>
+                  <a><b id="valor-liqui-compra" style="color: #e4e8d1"></b></a>
+                </div>
+                <div class="div-venta">
+                  <a
+                    class="text-valor"
+                    id="valor-compra"
+                    style="text-align: right"
+                    >Venta</a
+                  >
+                  <a><b id="valor-liqui-venta" style="color: #e4e8d1"></b></a>
+                </div>
+              </div>
+            </li>
+            <li>
+              <canvas width="500" height="50"></canvas>
+              <div class="div-dolar">
+                <p class="text-dolar" style="background-color: #e4e8d1; color: #718176">
+                  💵 DOLAR PROMEDIO
+                </p>
+                <div class="div-compra">
+                  <a class="text-valor" id="valor-compra">Compra </a>
+                  <a><b id="valor-promedio-compra" style="color: #e4e8d1"></b></a>
+                </div>
+                <div class="div-venta">
+                  <a class="text-valor" id="valor-compra" style="text-align: right"
+                    >Venta</a
+                  >
+                  <a><b id="valor-promedio-venta" style="color: #e4e8d1"></b></a>
+                </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="uk-hidden@xl uk-light" hidden>
+          <a
+            class="uk-position-center-left uk-position-small"
+            href="#"
+            uk-slidenav-previous
+            uk-slider-item="previous"
+          ></a>
+          <a
+            class="uk-position-center-right uk-position-small"
+            href="#"
+            uk-slidenav-next
+            uk-slider-item="next"
+          ></a>
+        </div>
+
+        <div class="uk-visible@xl" hidden>
+          <a
+            class="uk-position-center-left-out uk-position-small"
+            href="#"
+            uk-slidenav-previous
+            uk-slider-item="previous"
+          ></a>
+          <a
+            class="uk-position-center-right-out uk-position-small"
+            href="#"
+            uk-slidenav-next
+            uk-slider-item="next"
+          ></a>
+        </div>
+
+        <!-- Alternative markup
+          
+                      <div class="uk-visible@s uk-dark"  uk-toggle="cls: uk-dark uk-light; mode: media; media: @xl">
+                          <a class="uk-position-center-left-out uk-position-small" uk-toggle="cls: uk-position-center-left-out uk-position-center-left; mode: media; media: @xl" href="#" uk-slidenav-previous uk-slider-item="previous"></a>
+                          <a class="uk-position-center-right-out uk-position-small" uk-toggle="cls: uk-position-center-right-out uk-position-center-right; mode: media; media: @xl" href="#" uk-slidenav-next uk-slider-item="next"></a>
+                      </div>
+          
+                      -->
+      </div>
+
+      <ul
+        class="uk-slider-nav uk-dotnav uk-flex-center uk-margin"
+        style="display: none !important"
+      ></ul>
+    </div>
+  </body>
+
+  <script type="text/javascript">
+    async function getValue(endpoint) {
+      const apiURL = "https://api-dolar-argentina.herokuapp.com" + endpoint;
+      const url = `https://api.allorigins.win/get?url=${encodeURIComponent(
+        apiURL
+      )}`;
+
+      try {
+        const response = await fetch(url, {
+          headers: { "Content-Type": "application/json" },
+        });
+        const data = await response.json();
+        return data;
+      } catch (error) {
+        console.log("Something went wrong " + error);
+      }
+    }
+
+    async function setValues() {
+      // Obtenemos los datos de la API
+      const dolarOficial = await getValue("/api/dolaroficial");
+      const dolarBlue = await getValue("/api/dolarblue");
+      const dolarBolsa = await getValue("/api/dolarbolsa");
+      const dolarLiqui = await getValue("/api/contadoliqui");
+      const dolarPromedio = await getValue("/api/dolarpromedio");
+      const dolarTurista = await getValue("/api/bbva");
+
+      // Variables con los valores de Compra
+      const oficialCompra = JSON.parse(dolarOficial.contents).compra;
+      const blueCompra = JSON.parse(dolarBlue.contents).compra;
+      const bolsaCompra = JSON.parse(dolarBolsa.contents).compra;
+      const liquiCompra = JSON.parse(dolarLiqui.contents).compra;
+      const promedioCompra = JSON.parse(dolarPromedio.contents).compra;
+
+      // Variables con los valores de Venta
+      const oficialVenta = JSON.parse(dolarOficial.contents).venta;
+      const blueVenta = JSON.parse(dolarBlue.contents).venta;
+      const bolsaVenta = JSON.parse(dolarBolsa.contents).venta;
+      const liquiVenta = JSON.parse(dolarLiqui.contents).venta;
+      const promedioVenta = JSON.parse(dolarPromedio.contents).venta;
+
+      // Asignamos los valores en el HTML
+      // Compra
+      document.getElementById("valor-oficial-compra").innerHTML =
+        "$ " + oficialCompra;
+      document.getElementById("valor-blue-compra").innerHTML =
+        "$ " + blueCompra;
+      document.getElementById("valor-bolsa-compra").innerHTML =
+        "$ " + bolsaCompra;
+      document.getElementById("valor-liqui-compra").innerHTML =
+        "$ " + liquiCompra;
+      document.getElementById("valor-promedio-compra").innerHTML =
+        "$ " + promedioCompra;
+
+      //Venta
+      document.getElementById("valor-oficial-venta").innerHTML =
+        "$ " + oficialVenta;
+      document.getElementById("valor-blue-venta").innerHTML = "$ " + blueVenta;
+      document.getElementById("valor-bolsa-venta").innerHTML =
+        "$ " + bolsaVenta;
+      document.getElementById("valor-liqui-venta").innerHTML =
+        "$ " + liquiVenta;
+      document.getElementById("valor-promedio-venta").innerHTML =
+        "$ " + promedioVenta;
+
+      document.getElementById("main").style.display = "block";
+    }
+  </script>
+  <!-- UIkit JS -->
+  <script src="https://cdn.jsdelivr.net/npm/uikit@3.6.18/dist/js/uikit.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/uikit@3.6.18/dist/js/uikit-icons.min.js"></script>
+  <script>
+    const sliderElement = document.getElementById("slider");
+    UIkit.slider(sliderElement, {
+      autoplay: true,
+      draggable: true,
+      autoplayInterval: 1500,
+    });
+  </script>
+</html>
