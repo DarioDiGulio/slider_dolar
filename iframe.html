@@ -6,9 +6,25 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/uikit@3.6.18/dist/css/uikit.min.css"
     />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap"
+      rel="stylesheet"
+    />
     <style>
+      * {
+        -webkit-touch-callout: none; /* iOS Safari */
+        -webkit-user-select: none; /* Safari */
+        -khtml-user-select: none; /* Konqueror HTML */
+        -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+        user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+        font-family: "Poppins", sans-serif;
+      }
+
       .text-valor {
-        color: #ad8241 !important;
+        color: #ed2e38 !important;
         margin-left: 5px;
       }
 
@@ -21,13 +37,17 @@
       }
 
       b {
-        color: #ad8241 !important;
+        color: #ed2e38 !important;
       }
 
       .text-dolar {
-        background-color: #e4e8d1;
+        background-color: #ffffff;
         padding-left: 5px;
-        color: #718176;
+        color: #ed2e38;
+      }
+
+      li {
+        padding: 0 10px ;
       }
     </style>
   </head>
@@ -38,9 +58,9 @@
         <div class="uk-slider-container uk-light">
           <ul class="test uk-slider-items">
             <li>
-              <canvas width="400" height="10"></canvas>
               <p class="text-dolar">
-                💰 DOLAR OFICIAL
+                <img src="icons/dolar_oficial.png" alt="Dólar Oficial" />
+                DÓLAR OFICIAL
                 <a class="text-valor" id="valor-oficial">Compra </a>
                 <a><b id="valor-oficial-compra"></b></a>
                 <a class="text-valor" id="valor-compra">Venta</a>
@@ -48,9 +68,9 @@
               </p>
             </li>
             <li>
-              <canvas width="400" height="10"></canvas>
               <p class="text-dolar">
-                💰 DOLAR BLUE
+                <img src="icons/dolar_blue.png" alt="Dólar Blue" />
+                DÓLAR BLUE
                 <a class="text-valor" id="valor-compra">Compra </a>
                 <a><b id="valor-blue-compra"></b></a>
                 <a class="text-valor" id="valor-compra">Venta</a>
@@ -58,9 +78,9 @@
               </p>
             </li>
             <li>
-              <canvas width="400" height="10"></canvas>
               <p class="text-dolar">
-                💰 DOLAR BOLSA
+                <img src="icons/dolar_bolsa.png" alt="Dólar Bolsa" />
+                DÓLAR BOLSA
                 <a class="text-valor" id="valor-compra">Compra </a>
                 <a><b id="valor-bolsa-compra"></b></a>
                 <a class="text-valor" id="valor-compra">Venta</a>
@@ -68,9 +88,12 @@
               </p>
             </li>
             <li>
-              <canvas width="400" height="10"></canvas>
               <p class="text-dolar">
-                💰 CONTADO LIQUI
+                <img
+                  src="icons/dolar_liqui.png"
+                  alt="Dólar Contado con liqui"
+                />
+                CONTADO LIQUI
                 <a class="text-valor" id="valor-compra">Compra </a>
                 <a><b id="valor-liqui-compra"></b></a>
                 <a class="text-valor" id="valor-compra">Venta</a>
@@ -78,13 +101,20 @@
               </p>
             </li>
             <li>
-              <canvas width="400" height="10"></canvas>
               <p class="text-dolar">
-                💰 DOLAR PROMEDIO
+                <img src="icons/dolar_promedio.png" alt="Dólar Promedio" />
+                DÓLAR PROMEDIO
                 <a class="text-valor" id="valor-compra">Compra </a>
                 <a><b id="valor-promedio-compra"></b></a>
                 <a class="text-valor" id="valor-compra">Venta</a>
                 <a><b id="valor-promedio-venta"></b></a>
+              </p>
+            </li>
+            <li>
+              <p class="text-dolar">
+                <img width="30" src="icons/riesgo_pais.png" alt="Riesgo País" />
+                RIESGO PAÍS
+                <a><b id="valor-riesgo-pais"></b></a>
               </p>
             </li>
           </ul>
@@ -119,6 +149,7 @@
       const dolarLiqui = await getValue("/api/contadoliqui");
       const dolarPromedio = await getValue("/api/dolarpromedio");
       const dolarTurista = await getValue("/api/bbva");
+      const riesgoPais = await getValue("/api/riesgopais");
 
       // Variables con los valores de Compra
       const oficialCompra = JSON.parse(dolarOficial.contents).compra;
@@ -157,6 +188,11 @@
         "$ " + liquiVenta;
       document.getElementById("valor-promedio-venta").innerHTML =
         "$ " + promedioVenta;
+
+      //Otros
+      document.getElementById("valor-riesgo-pais").innerHTML = JSON.parse(
+        riesgoPais.contents
+      ).valor;
     }
   </script>
   <!-- UIkit JS -->
@@ -168,6 +204,7 @@
       autoplay: true,
       draggable: true,
       autoplayInterval: 0,
+      pauseOnHover: true,
       velocity: 0.01,
     });
   </script>
