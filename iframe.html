@@ -187,7 +187,7 @@
       const dolarBolsa = await getValue("/api/dolarbolsa");
       const dolarLiqui = await getValue("/api/contadoliqui");
       const dolarPromedio = await getValue("/api/dolarpromedio");
-      const dolarTurista = await getValue("/api/bbva");
+      const dolarTurista = await getValue("/api/dolarturista");
       const riesgoPais = await getValue("/api/riesgopais");
 
       // Variables con los valores de Compra
@@ -203,6 +203,7 @@
       const bolsaVenta = JSON.parse(dolarBolsa.contents).venta;
       const liquiVenta = JSON.parse(dolarLiqui.contents).venta;
       const promedioVenta = JSON.parse(dolarPromedio.contents).venta;
+      const turistaVenta = JSON.parse(dolarTurista.contents).venta;
 
       // Asignamos los valores en el HTML
       // Compra
@@ -227,6 +228,7 @@
         "$ " + liquiVenta;
       document.getElementById("valor-promedio-venta").innerHTML =
         "$ " + promedioVenta;
+      document.getElementById("valor-turista-venta").innerHTML = "$ " + turistaVenta;
 
       //Otros
       document.getElementById("valor-riesgo-pais").innerHTML = JSON.parse(
