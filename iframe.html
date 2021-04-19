@@ -8,7 +8,7 @@
     />
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap"
       rel="stylesheet"
     />
     <style>
@@ -21,6 +21,8 @@
         user-select: none; /* Non-prefixed version, currently
                                   supported by Chrome, Edge, Opera and Firefox */
         font-family: "Poppins", sans-serif;
+        font-weight: bold;
+        background-color: #ffffff;
       }
 
       .text-valor {
@@ -47,7 +49,11 @@
       }
 
       li {
-        padding: 0 10px ;
+        padding: 0 10px;
+      }
+
+      img {
+        width: 30px;
       }
     </style>
   </head>
@@ -79,12 +85,20 @@
             </li>
             <li>
               <p class="text-dolar">
-                <img src="icons/dolar_bolsa.png" alt="Dólar Bolsa" />
-                DÓLAR BOLSA
+                <img src="icons/dolar_promedio.png" alt="Dólar Promedio" />
+                DÓLAR PROMEDIO
                 <a class="text-valor" id="valor-compra">Compra </a>
-                <a><b id="valor-bolsa-compra"></b></a>
+                <a><b id="valor-promedio-compra"></b></a>
                 <a class="text-valor" id="valor-compra">Venta</a>
-                <a><b id="valor-bolsa-venta"></b></a>
+                <a><b id="valor-promedio-venta"></b></a>
+              </p>
+            </li>
+            <li>
+              <p class="text-dolar">
+                <img src="icons/dolar_turista.png" alt="Dólar Turista" />
+                DÓLAR TURISTA
+                <a class="text-valor" id="valor-compra">Venta</a>
+                <a><b id="valor-turista-venta"></b></a>
               </p>
             </li>
             <li>
@@ -102,12 +116,12 @@
             </li>
             <li>
               <p class="text-dolar">
-                <img src="icons/dolar_promedio.png" alt="Dólar Promedio" />
-                DÓLAR PROMEDIO
+                <img src="icons/dolar_bolsa.png" alt="Dólar Bolsa" />
+                DÓLAR BOLSA
                 <a class="text-valor" id="valor-compra">Compra </a>
-                <a><b id="valor-promedio-compra"></b></a>
+                <a><b id="valor-bolsa-compra"></b></a>
                 <a class="text-valor" id="valor-compra">Venta</a>
-                <a><b id="valor-promedio-venta"></b></a>
+                <a><b id="valor-bolsa-venta"></b></a>
               </p>
             </li>
             <li>
