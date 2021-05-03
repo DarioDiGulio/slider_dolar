@@ -12,7 +12,7 @@
       rel="stylesheet"
     />
     <style>
-      * {
+      #slider {
         -webkit-touch-callout: none; /* iOS Safari */
         -webkit-user-select: none; /* Safari */
         -khtml-user-select: none; /* Konqueror HTML */
@@ -30,15 +30,26 @@
         margin-left: 5px;
       }
 
-      a:link,
-      a:visited,
-      a:active,
-      a {
+      #slider a:link,
+      #slider a:visited,
+      #slider a:active,
+      #slider a {
         text-decoration: none !important;
         cursor: default !important;
       }
 
-      b {
+      #valor-oficial-compra,
+      #valor-oficial-venta,
+      #valor-blue-compra,
+      #valor-blue-venta,
+      #valor-promedio-compra,
+      #valor-promedio-venta,
+      #valor-turista-venta,
+      #valor-liqui-compra,
+      #valor-liqui-venta,
+      #valor-bolsa-compra,
+      #valor-bolsa-venta,
+      #valor-riesgo-pais {
         color: #ed2e38 !important;
       }
 
@@ -48,7 +59,7 @@
         color: #ed2e38;
       }
 
-      li {
+      .test.uk-slider-items li {
         padding: 0 10px;
       }
 
@@ -228,7 +239,8 @@
         "$ " + liquiVenta;
       document.getElementById("valor-promedio-venta").innerHTML =
         "$ " + promedioVenta;
-      document.getElementById("valor-turista-venta").innerHTML = "$ " + turistaVenta;
+      document.getElementById("valor-turista-venta").innerHTML =
+        "$ " + turistaVenta;
 
       //Otros
       document.getElementById("valor-riesgo-pais").innerHTML = JSON.parse(
