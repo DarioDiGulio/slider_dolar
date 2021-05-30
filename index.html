@@ -1,10 +1,452 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Index</title>
+    <!-- UIkit CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/uikit@3.6.18/dist/css/uikit.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      #slider {
+        -webkit-touch-callout: none; /* iOS Safari */
+        -webkit-user-select: none; /* Safari */
+        -khtml-user-select: none; /* Konqueror HTML */
+        -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+        user-select: none; /* Non-prefixed version, currently
+        supported by Chrome, Edge, Opera and Firefox */
+        font-family: "Poppins", sans-serif;
+        font-weight: bold;
+        background-color: var(--backgrodundcolor);
+      }
+
+      .text-valor {
+        color: var(--textcolor) !important;
+        margin-left: 5px;
+      }
+
+      #slider-vertical a:link,
+      #slider-vertical a:visited,
+      #slider-vertical a:active,
+      #slider-vertical a,
+      #slider-horizontal a:link,
+      #slider-horizontal a:visited,
+      #slider-horizontal a:active,
+      #slider-horizontal a {
+        text-decoration: none !important;
+        cursor: default !important;
+      }
+
+      #valor-oficial-compra,
+      #valor-oficial-venta,
+      #valor-blue-compra,
+      #valor-blue-venta,
+      #valor-promedio-compra,
+      #valor-promedio-venta,
+      #valor-turista-venta,
+      #valor-liqui-compra,
+      #valor-liqui-venta,
+      #valor-bolsa-compra,
+      #valor-bolsa-venta,
+      #valor-riesgo-pais,
+      #valor-oficial-compra-v,
+      #valor-oficial-venta-v,
+      #valor-blue-compra-v,
+      #valor-blue-venta-v,
+      #valor-promedio-compra-v,
+      #valor-promedio-venta-v,
+      #valor-turista-venta-v,
+      #valor-liqui-compra-v,
+      #valor-liqui-venta-v,
+      #valor-bolsa-compra-v,
+      #valor-bolsa-venta-v,
+      #valor-riesgo-pais-v {
+        color: var(--textcolor) !important;
+      }
+
+      .text-dolar {
+        background-color: var(--backgrodundcolor);
+        padding-left: 5px;
+        color: var(--textcolor);
+      }
+
+      .test.uk-slider-items li {
+        padding: 0 10px;
+      }
+
+      .icon-plugin {
+        width: 20px;
+      }
+    </style>
   </head>
 
-  <body>
-    <iframe src="./iframe.html" frameborder="0" style="width: 100%;"></iframe>
+  <body onload="setValues(), setTheme()">
+    <div uk-slider id="slider-vertical">
+      <div class="uk-position-relative">
+        <div class="uk-slider-container uk-light">
+          <ul class="test uk-slider-items">
+            <li>
+              <p class="text-dolar">
+                <img
+                  class="icon-plugin"
+                  src="icons/dolar_oficial.png"
+                  alt="Dólar Oficial"
+                />
+                DÓLAR OFICIAL
+                <a class="text-valor">Compra </a>
+                <a><b id="valor-oficial-compra"></b></a>
+                <a class="text-valor">Venta</a>
+                <a><b id="valor-oficial-venta"></b></a>
+              </p>
+            </li>
+            <li>
+              <p class="text-dolar">
+                <img
+                  class="icon-plugin"
+                  src="icons/dolar_blue.png"
+                  alt="Dólar Blue"
+                />
+                DÓLAR BLUE
+                <a class="text-valor">Compra </a>
+                <a><b id="valor-blue-compra"></b></a>
+                <a class="text-valor">Venta</a>
+                <a><b id="valor-blue-venta"></b></a>
+              </p>
+            </li>
+            <li>
+              <p class="text-dolar">
+                <img
+                  class="icon-plugin"
+                  src="icons/dolar_promedio.png"
+                  alt="Dólar Promedio"
+                />
+                DÓLAR PROMEDIO
+                <a class="text-valor">Compra </a>
+                <a><b id="valor-promedio-compra"></b></a>
+                <a class="text-valor">Venta</a>
+                <a><b id="valor-promedio-venta"></b></a>
+              </p>
+            </li>
+            <li>
+              <p class="text-dolar">
+                <img
+                  class="icon-plugin"
+                  src="icons/dolar_turista.png"
+                  alt="Dólar Turista"
+                />
+                DÓLAR TURISTA
+                <a class="text-valor">Venta</a>
+                <a><b id="valor-turista-venta"></b></a>
+              </p>
+            </li>
+            <li>
+              <p class="text-dolar">
+                <img
+                  class="icon-plugin"
+                  src="icons/dolar_liqui.png"
+                  alt="Dólar Contado con liqui"
+                />
+                CONTADO LIQUI
+                <a class="text-valor">Compra </a>
+                <a><b id="valor-liqui-compra"></b></a>
+                <a class="text-valor">Venta</a>
+                <a><b id="valor-liqui-venta"></b></a>
+              </p>
+            </li>
+            <li>
+              <p class="text-dolar">
+                <img
+                  class="icon-plugin"
+                  src="icons/dolar_bolsa.png"
+                  alt="Dólar Bolsa"
+                />
+                DÓLAR BOLSA
+                <a class="text-valor">Compra </a>
+                <a><b id="valor-bolsa-compra"></b></a>
+                <a class="text-valor">Venta</a>
+                <a><b id="valor-bolsa-venta"></b></a>
+              </p>
+            </li>
+            <li>
+              <p class="text-dolar">
+                <img
+                  class="icon-plugin"
+                  src="icons/riesgo_pais.png"
+                  alt="Riesgo País"
+                />
+                RIESGO PAÍS
+                <a><b id="valor-riesgo-pais"></b></a>
+              </p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <table
+      class="uk-table uk-table-divider uk-table-small uk-text-center uk-table-middle"
+      id="slider-horizontal"
+      style="width:max-content;"
+    >
+      <thead>
+        <tr>
+          <th class="uk-text-center">Valores del Dólar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <p class="text-dolar">
+              <img
+                class="icon-plugin"
+                src="icons/dolar_oficial.png"
+                alt="Dólar Oficial"
+              />
+              OFICIAL
+              <a class="text-valor">Compra </a>
+              <a><b id="valor-oficial-compra-v"></b></a>
+              <a class="text-valor">Venta</a>
+              <a><b id="valor-oficial-venta-v"></b></a>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p class="text-dolar">
+              <img
+                class="icon-plugin"
+                src="icons/dolar_blue.png"
+                alt="Dólar Blue"
+              />
+              BLUE
+              <a class="text-valor">Compra </a>
+              <a><b id="valor-blue-compra-v"></b></a>
+              <a class="text-valor">Venta</a>
+              <a><b id="valor-blue-venta-v"></b></a>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p class="text-dolar">
+              <img
+                class="icon-plugin"
+                src="icons/dolar_promedio.png"
+                alt="Dólar Promedio"
+              />
+              PROMEDIO
+              <a class="text-valor">Compra </a>
+              <a><b id="valor-promedio-compra-v"></b></a>
+              <a class="text-valor">Venta</a>
+              <a><b id="valor-promedio-venta-v"></b></a>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p class="text-dolar">
+              <img
+                class="icon-plugin"
+                src="icons/dolar_turista.png"
+                alt="Dólar Turista"
+              />
+              TURISTA
+              <a class="text-valor">Venta</a>
+              <a><b id="valor-turista-venta-v"></b></a>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p class="text-dolar">
+              <img
+                class="icon-plugin"
+                src="icons/dolar_liqui.png"
+                alt="Dólar Contado con liqui"
+              />
+              CONTADO LIQUI
+              <a class="text-valor">Compra </a>
+              <a><b id="valor-liqui-compra-v"></b></a>
+              <a class="text-valor">Venta</a>
+              <a><b id="valor-liqui-venta-v"></b></a>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p class="text-dolar">
+              <img
+                class="icon-plugin"
+                src="icons/dolar_bolsa.png"
+                alt="Dólar Bolsa"
+              />
+              BOLSA
+              <a class="text-valor">Compra </a>
+              <a><b id="valor-bolsa-compra-v"></b></a>
+              <a class="text-valor">Venta</a>
+              <a><b id="valor-bolsa-venta-v"></b></a>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p class="text-dolar">
+              <img
+                class="icon-plugin"
+                src="icons/riesgo_pais.png"
+                alt="Riesgo País"
+              />
+              RIESGO PAÍS
+              <a><b id="valor-riesgo-pais-v"></b></a>
+            </p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </body>
+
+  <script>
+    async function getValue(endpoint) {
+      const apiURL = `https://api-dolar-argentina.herokuapp.com${endpoint}`;
+      const url = `https://api.allorigins.win/get?url=${encodeURIComponent(
+        apiURL
+      )}`;
+
+      try {
+        const response = await fetch(url, {
+          headers: { "Content-Type": "application/json" },
+        });
+        const data = await response.json();
+        return data;
+      } catch (error) {
+        console.log(`Something went wrong with ${apiURL}: ${error}`);
+      }
+    }
+
+    async function setValues() {
+      // Obtenemos los datos de la API
+      const dolarOficial = await getValue("/api/dolaroficial");
+      const dolarBlue = await getValue("/api/dolarblue");
+      const dolarBolsa = await getValue("/api/dolarbolsa");
+      const dolarLiqui = await getValue("/api/contadoliqui");
+      const dolarPromedio = await getValue("/api/dolarpromedio");
+      const dolarTurista = await getValue("/api/dolarturista");
+      const riesgoPais = await getValue("/api/riesgopais");
+
+      // Variables con los valores de Compra
+      const oficialCompra = JSON.parse(dolarOficial.contents).compra;
+      const blueCompra = JSON.parse(dolarBlue.contents).compra;
+      const bolsaCompra = JSON.parse(dolarBolsa.contents).compra;
+      const liquiCompra = JSON.parse(dolarLiqui.contents).compra;
+      const promedioCompra = JSON.parse(dolarPromedio.contents).compra;
+
+      // Variables con los valores de Venta
+      const oficialVenta = JSON.parse(dolarOficial.contents).venta;
+      const blueVenta = JSON.parse(dolarBlue.contents).venta;
+      const bolsaVenta = JSON.parse(dolarBolsa.contents).venta;
+      const liquiVenta = JSON.parse(dolarLiqui.contents).venta;
+      const promedioVenta = JSON.parse(dolarPromedio.contents).venta;
+      const turistaVenta = JSON.parse(dolarTurista.contents).venta;
+
+      // Asignamos los valores en el HTML
+      // Compra
+      document.getElementById("valor-oficial-compra").innerHTML =
+        "$ " + oficialCompra;
+      document.getElementById("valor-blue-compra").innerHTML =
+        "$ " + blueCompra;
+      document.getElementById("valor-bolsa-compra").innerHTML =
+        "$ " + bolsaCompra;
+      document.getElementById("valor-liqui-compra").innerHTML =
+        "$ " + liquiCompra;
+      document.getElementById("valor-promedio-compra").innerHTML =
+        "$ " + promedioCompra;
+      document.getElementById("valor-oficial-compra-v").innerHTML =
+        "$ " + oficialCompra;
+      document.getElementById("valor-blue-compra-v").innerHTML =
+        "$ " + blueCompra;
+      document.getElementById("valor-bolsa-compra-v").innerHTML =
+        "$ " + bolsaCompra;
+      document.getElementById("valor-liqui-compra-v").innerHTML =
+        "$ " + liquiCompra;
+      document.getElementById("valor-promedio-compra-v").innerHTML =
+        "$ " + promedioCompra;
+
+      //Venta
+      document.getElementById("valor-oficial-venta").innerHTML =
+        "$ " + oficialVenta;
+      document.getElementById("valor-blue-venta").innerHTML = "$ " + blueVenta;
+      document.getElementById("valor-bolsa-venta").innerHTML =
+        "$ " + bolsaVenta;
+      document.getElementById("valor-liqui-venta").innerHTML =
+        "$ " + liquiVenta;
+      document.getElementById("valor-promedio-venta").innerHTML =
+        "$ " + promedioVenta;
+      document.getElementById("valor-turista-venta").innerHTML =
+        "$ " + turistaVenta;
+      document.getElementById("valor-oficial-venta-v").innerHTML =
+        "$ " + oficialVenta;
+      document.getElementById("valor-blue-venta-v").innerHTML = "$ " + blueVenta;
+      document.getElementById("valor-bolsa-venta-v").innerHTML =
+        "$ " + bolsaVenta;
+      document.getElementById("valor-liqui-venta-v").innerHTML =
+        "$ " + liquiVenta;
+      document.getElementById("valor-promedio-venta-v").innerHTML =
+        "$ " + promedioVenta;
+      document.getElementById("valor-turista-venta-v").innerHTML =
+        "$ " + turistaVenta;
+
+      //Otros
+      document.getElementById("valor-riesgo-pais").innerHTML = JSON.parse(
+        riesgoPais.contents
+      ).valor;
+      document.getElementById("valor-riesgo-pais-v").innerHTML = JSON.parse(
+        riesgoPais.contents
+      ).valor;
+    }
+
+    function setTheme() {
+      const queryParams = window.location.search;
+      const params = new URLSearchParams(queryParams);
+      const textColor = params.get("textcolor");
+      const bgColor = params.get("backgrodundcolor");
+      const mode = params.get("mode");
+      if (textColor && bgColor && mode) {
+        document.documentElement.style.setProperty(
+          "--textcolor",
+          `#${textColor}`
+        );
+        document.documentElement.style.setProperty(
+          "--backgrodundcolor",
+          `#${bgColor}`
+        );
+
+        if (mode === "horizontal") {
+          document.getElementById('slider-vertical').style.display = 'none';
+        } else {
+          document.getElementById('slider-horizontal').style.display = 'none';
+        }
+      } else {
+        throw new Error(
+          "Los parámetros solicitados para el slider dolar no son correctos."
+        );
+      }
+    }
+  </script>
+  <!-- UIkit JS -->
+  <script src="https://cdn.jsdelivr.net/npm/uikit@3.6.18/dist/js/uikit.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/uikit@3.6.18/dist/js/uikit-icons.min.js"></script>
+  <script>
+    const sliderElement = document.getElementById("slider");
+    UIkit.slider(sliderElement, {
+      autoplay: true,
+      draggable: true,
+      autoplayInterval: 0,
+      pauseOnHover: true,
+      velocity: 0.01,
+    });
+  </script>
 </html>
